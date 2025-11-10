@@ -9,7 +9,7 @@ const questions = [
         ]
     },
     {
-        question: "Kui tühjaks on su kohvitass praegu?",
+        question: "Kui tühi on su kohvitass praegu?",
         answers: [
             { text: "Mul on 3 tühja tassi laual", score: { coffee: 30, zombie: 20 } },
             { text: "Joon praegu", score: { coffee: 25, student: 20 } },
@@ -18,7 +18,7 @@ const questions = [
         ]
     },
     {
-        question: "Mitu loengut oled sel nädalal reaalselt kohal käinud?",
+        question: "Mitmes loengus oled sel nädalal reaalselt kohal käinud?",
         answers: [
             { text: "Kõik!", score: { guru: 30, student: 20 } },
             { text: "Umbes pooled", score: { student: 30 } },

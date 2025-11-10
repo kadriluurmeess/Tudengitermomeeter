@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             student: "Tartu Tudeng",
             zombie: "Zombie Tudeng",
             guru: "Õppur-Guru",
-            coffee: "Kohvimasinaga Sõltlane"
+            coffee: "Kohvimasina Sõltlane"
         };
         return types[type] || type;
     }
