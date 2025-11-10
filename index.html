@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tartu Tudengi Vibe Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="active">Avaleht</a>
+            <a href="about.html">Meist</a>
+            <a href="statistics.html">Statistika</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Tartu Tudengi Vibe Checker</h1>
+        <p class="subtitle">Saa teada, kui ellu sa veel jäid! 🎓</p>
+
+        <div id="quiz-container" class="hidden">
+            <!-- Küsimused genereeritakse JavaScriptiga -->
+        </div>
+
+        <div id="start-container">
+            <button id="start-quiz" class="btn">Alusta Testi</button>
+        </div>
+
+        <div id="result-container" class="hidden">
+            <!-- Tulemused kuvatakse siia -->
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Tartu Tudengi Vibe Checker</p>
+    </footer>
+
+    <script src="js/questions.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistika - Tartu Tudengi Vibe Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Avaleht</a>
+            <a href="about.html">Meist</a>
+            <a href="statistics.html" class="active">Statistika</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Statistika</h1>
+        <div class="stats-container">
+            <div class="stats-card">
+                <h2>Nädala Keskmine Vibe</h2>
+                <div id="weekly-stats">
+                    <!-- Statistics will be loaded by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="stats-card">
+                <h2>Populaarsemad Vibe'id</h2>
+                <table id="vibe-stats">
+                    <tr>
+                        <th>Vibe Tüüp</th>
+                        <th>Protsent</th>
+                    </tr>
+                    <!-- Statistics will be loaded by JavaScript -->
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Tartu Tudengi Vibe Checker</p>
+    </footer>
+
+    <script src="js/statistics.js"></script>
+</body>
+</html>
