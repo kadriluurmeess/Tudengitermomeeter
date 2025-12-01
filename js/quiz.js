@@ -77,12 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resultContainer.innerHTML = `
             <h2>Sinu Tudengi Vibe:</h2>
-            ${results.map(result => `
-                <p>${getTypeName(result.type)}: ${result.percentage}%</p>
-            `).join('')}
-            <p class="result-message">${resultMessage}</p>
+            ${resultMessage}
             <button class="btn" onclick="location.reload()">Proovi Uuesti</button>
-            <button class="btn" onclick="shareResult('${resultMessage}')">Jaga Tulemust</button>
         `;
 
         // Save to localStorage
@@ -91,10 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getTypeName(type) {
         const types = {
-            student: "Tartu Tudeng",
-            zombie: "Zombie Tudeng",
-            guru: "Õppur-Guru",
-            coffee: "Kohvimasina Sõltlane"
+            student: "🎓 100% Tartu Tudeng",
+            zombie: "🧟 Zombie Tudeng",
+            guru: "📚 Õppur-Guru",
+            coffee: "☕ Kohvimasinaga Sõltlane"
         };
         return types[type] || type;
     }
@@ -103,14 +99,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const topType = results[0];
         const secondType = results[1];
 
-        const messages = {
-            student: "Sa oled tõeline Tartu tudeng! Sinus on perfektne segu teadmishimu ja tudengimeelsust.",
-            zombie: "Võta hetk puhkamiseks - isegi zombid vajavad und!",
-            guru: "Õppur-Guru staatuses! Sa oled see, kellelt kõik konspekte küsivad.",
-            coffee: "Su veres voolab rohkem kohvi kui vett. Kas sa elad kohvikus?"
+        const descriptions = {
+            zombie: {
+                title: "🧟 Zombie Tudeng",
+                text: "Sa oled kõndiv sessi-vaim. Su keha liigub, aga hing on raamatukokku maha jäänud. Kohvi tase veres on kriitiline, unevõlg ehmatav ja Moodle'i avamine tekitab eksistentsiaalse paanika.",
+                advice: "Soovitus: mine joo vett. Ja siis veel vett. Ja võib-olla magagi."
+            },
+            coffee: {
+                title: "☕ Kohvimasinaga Sõltlane",
+                text: "Sa ei joo kohvi – kohv joob sind. Kohvitass on alati käes, isegi unes. Raamatukogus tunnevad baristad sind nimepidi ja mõni lausa vaatab murelikult.",
+                advice: "Soovitus: proovi vahel ka sööki, mitte ainult kofeiini."
+            },
+            guru: {
+                title: "📚 Õppur-Guru",
+                text: "Sa oled see inimene, kellelt kõik küsivad konspekte. Moodle on su kodu ja loengus oled kohal enne õppejõudu. Kui TÜ-l oleks tudengitele oma superhero, siis oleksid see sina.",
+                advice: "Soovitus: vahel on ka puhata vaja, muidu saad liiga võimsaks."
+            },
+            student: {
+                title: "🎓 100% Tartu Tudeng",
+                text: "Täiuslik tasakaal: pisut kaos, pisut motivatsiooni, palju kohvi ja natuke ellujäämist. Sa tead, kust saab tasuta pistikuid, millal Raatuse ühika dušš on vaba ja palju peab õppima, et mitte läbi kukkuda ja samal ajal elus püsida.",
+                advice: "Soovitus: jätka samas vaimus – sa kehastad TÜ hinge."
+            }
         };
 
-        return `${messages[topType.type]} (${topType.percentage}% ${getTypeName(topType.type)} ja ${secondType.percentage}% ${getTypeName(secondType.type)})`;
+        const mainType = descriptions[topType.type];
+        return `
+            <div class="result-details">
+                <h3>${mainType.title}</h3>
+                <p><strong>Sa oled ${topType.percentage}% ${getTypeName(topType.type)} ja ${secondType.percentage}% ${getTypeName(secondType.type)}.</strong></p>
+                <p>${mainType.text}</p>
+                <p><em>${mainType.advice}</em></p>
+            </div>
+        `;
     }
 
     function saveResult(results) {
