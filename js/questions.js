@@ -65,7 +65,7 @@ const questions = [
     {
         question: "Mis seis on su toaga?",
         answers: [
-            { text: "Kaos - loominguline", score: { zombie: 25, tudeng: 20 } },
+            { text: "Kaos (loominguline)", score: { zombie: 25, tudeng: 20 } },
             { text: "Kerge segadus", score: { tudeng: 25, sõltlane: 15 } },
             { text: "Üsna korras", score: { tudeng: 20, tuupur: 20 } },
             { text: "Steriilne, nagu eksamipaanikas koristatud", score: { tuupur: 30 } }

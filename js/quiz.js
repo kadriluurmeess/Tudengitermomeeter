@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentQuestion = 0;
     let scores = {
-        student: 0,
+        tudeng: 0,
         zombie: 0,
-        guru: 0,
-        coffee: 0
+        tuupur: 0,
+        sõltlane: 0
     };
 
     startButton.addEventListener('click', startQuiz);
@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.subtitle')?.classList.add('hidden');
         document.querySelector('h1')?.classList.add('hidden');
         quizContainer.classList.remove('hidden');
+        quizContainer.classList.add('fade-in');
+        setTimeout(() => quizContainer.classList.remove('fade-in'), 300);
         showQuestion();
     }
 
@@ -37,6 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
         `;
+
+        // Add fade when new question is shown
+        quizContainer.classList.add('fade-in');
+        setTimeout(() => quizContainer.classList.remove('fade-in'), 300);
 
         // Add event listeners to answer buttons
         document.querySelectorAll('.answer-btn').forEach(button => {
@@ -57,15 +63,57 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentQuestion < questions.length) {
             showQuestion();
         } else {
-            showResult();
+            // Fade out current quiz container then show 'Get Results' button
+            quizContainer.classList.add('fade-out');
+            setTimeout(() => {
+                quizContainer.classList.remove('fade-out');
+                // Last question answered – clear questions and hide quiz container (avoid stray empty box)
+                quizContainer.innerHTML = '';
+                quizContainer.classList.add('hidden');
+                const hero = document.querySelector('.hero-section');
+                const btnWrap = document.createElement('div');
+                btnWrap.className = 'get-results-wrap absolute-center fade-in';
+                const getBtn = document.createElement('button');
+                getBtn.id = 'get-results';
+                getBtn.className = 'btn get-results-btn';
+                // Localize to Estonian
+                getBtn.textContent = 'Näita tulemusi';
+                btnWrap.appendChild(getBtn);
+                // remove any previous get-results wrapper (avoid duplicates)
+                document.querySelectorAll('.get-results-wrap').forEach(el => el.remove());
+                // append the button to the hero section so it sits between the wave lines
+                hero.appendChild(btnWrap);
+                // Optionally, animate the button appearance
+                setTimeout(() => btnWrap.classList.remove('fade-in'), 300);
+                // Attach click to show results overlay
+                getBtn.addEventListener('click', () => {
+                    showResultOverlay();
+                });
+            }, 200);
         }
     }
 
     function showResult() {
-        quizContainer.classList.add('hidden');
-        resultContainer.classList.remove('hidden');
+        // Backwards compatibility: show results directly into overlay
+        showResultOverlay();
+    }
 
-        // Calculate percentages
+    function showResultOverlay() {
+        // Hide the quiz container content (questions container remains to maintain layout)
+        quizContainer.classList.add('hidden');
+        // Prevent background scroll while overlay is visible
+        document.body.style.overflow = 'hidden';
+
+        // Create overlay
+        let overlay = document.createElement('div');
+        overlay.className = 'results-overlay fade-in';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        // Leave main content visible; only hide the quiz container (we already add hidden on quizContainer at start)
+        // Keep decorative waves visible and header clickable for navigation
+        // (do not hide waves or header; just hide main content)
+
+        // Calculate results (extract the logic from showResult)
         const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
         let results = Object.entries(scores)
             .filter(([type, score]) => score > 0)
@@ -75,37 +123,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }))
             .sort((a, b) => b.percentage - a.percentage);
 
-        // Round percentages and ensure they sum to 100%
-        let roundedResults = results.map(r => ({
-            ...r,
-            percentage: Math.floor(r.percentage)
-        }));
-
-        // Calculate remaining percentage to distribute
+        let roundedResults = results.map(r => ({ ...r, percentage: Math.floor(r.percentage) }));
         let totalRounded = roundedResults.reduce((sum, r) => sum + r.percentage, 0);
         let remaining = 100 - totalRounded;
-
-        // Distribute remaining percentage to top results
         for (let i = 0; i < remaining && i < roundedResults.length; i++) {
             roundedResults[i].percentage++;
         }
-
         results = roundedResults;
 
-        // Generate result message
-        let resultMessage = generateResultMessage(results);
-
-        resultContainer.innerHTML = `
-            <h2>Sinu Tudengi Vibe:</h2>
-            <div class="result-box">
-                ${resultMessage}
-            </div>
-            <button class="btn" onclick="location.reload()">Proovi Uuesti</button>
-        `;
+        const resultMessage = generateResultMessage(results);
 
         // Save to localStorage
         saveResult(results);
+
+        overlay.innerHTML = `
+            <div class="result-card">
+                <h2>Sinu Tudengi Vibe</h2>
+                <div class="result-box">
+                    ${resultMessage}
+                </div>
+                <div class="result-actions">
+                    <button class="btn" id="try-again-overlay">Proovi Uuesti</button>
+                </div>
+            </div>
+        `;
+
+        // Append overlay to body
+        document.body.appendChild(overlay);
+
+        // Position overlay below header so header remains visible and clickable
+        const headerEl = document.querySelector('header');
+        const headerHeight = headerEl ? Math.ceil(headerEl.getBoundingClientRect().height) : 0;
+        overlay.style.top = headerHeight + 'px';
+        overlay.style.height = `calc(100vh - ${headerHeight}px)`;
+
+        // Retry button handler
+        document.getElementById('try-again-overlay').addEventListener('click', () => {
+            // Reset state and reload
+            overlay.classList.add('fade-out');
+            setTimeout(() => location.reload(), 300);
+        });
     }
+
+    
 
     function getTypeName(type) {
         const types = {

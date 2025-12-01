@@ -4,6 +4,7 @@
     --background-color: #ff99dc; /* Pink background */
     --text-color: #0d0d55; /* Dark blue text */
     --accent-color: #d9f103; /* Yellow */
+    --lilac: #D2C7FF; /* light lilac used for result box */
 }
 
 * {
@@ -23,6 +24,8 @@ header {
     background-color: var(--primary-color);
     padding: 0.3rem 0;
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 1000;
 }
 
 .header-container {
@@ -103,7 +106,7 @@ h1 {
 }
 
 .wavy-lines {
-    position: absolute;
+    position: absolute; /* restore previous alignment relative to parent */
     width: 350px;
     height: 350px;
     pointer-events: none;
@@ -245,7 +248,7 @@ h1 {
 }
 
 .result-box {
-    background: var(--accent-color);
+    background: var(--lilac);
     padding: 3rem 3.5rem;
     border-radius: 30px;
     max-width: 550px;
@@ -288,7 +291,7 @@ h1 {
 }
 
 .about-content {
-    background: white;
+    background: var(--lilac);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -310,7 +313,7 @@ h1 {
 }
 
 .stats-card {
-    background: white;
+    background: var(--lilac);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -322,3 +325,145 @@ footer {
     margin-top: 4rem;
     color: var(--text-color);
 }
+/* Prevent horizontal scrolling caused by decorative images */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Prevent horizontal scrolling caused by decorative images */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Get Results button container (shown after last question) */
+.get-results-wrap {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.get-results-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border-radius: 40px;
+}
+
+/* If we place get-results into hero-section, center it exactly between lines */
+.get-results-wrap.absolute-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6; /* above waves and hero content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Make the button a larger navy card centered between waves */
+.get-results-btn {
+    background: var(--primary-color);
+    color: var(--accent-color);
+    padding: 2.25rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(13,13,85,0.25);
+    font-size: 1.4rem;
+    font-family: 'Racing Sans One', sans-serif;
+}
+
+/* Overlay for final results, centered */
+.results-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    pointer-events: auto;
+    background: transparent; /* allow decorative waves to show through */
+}
+
+.results-overlay .result-card {
+    max-width: 700px;
+    width: calc(100% - 30px);
+    padding: 1.25rem 1.5rem;
+    background: var(--lilac);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(13,13,85,0.15);
+    position: relative;
+    padding-bottom: 4rem; /* make room for bottom-centered action */
+}
+
+.result-card h2 {
+    color: var(--primary-color);
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Simple fade animations */
+.fade-in {
+    animation: fadeIn 300ms ease-out forwards;
+}
+.fade-out {
+    animation: fadeOut 300ms ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-8px); }
+}
+
+/* Small centered retry button at the bottom of the overlay */
+.results-overlay .result-actions {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 24px;
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#try-again-overlay {
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    border-radius: 30px;
+    background: var(--primary-color);
+    color: var(--accent-color);
+    box-shadow: 0 6px 20px rgba(13,13,85,0.2);
+}
+
+/* New middle waves, appearing between the top waves & hero content */
+.wavy-mid-left {
+    top: 32%; /* slightly below heading */
+    left: 4%;
+    background-image: url("data:image/svg+xml,%3Csvg width='350' height='350' viewBox='0 0 350 350' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 20 320 Q 30 260, 50 270 T 90 280 T 130 270' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 300 Q 30 240, 50 250 T 90 260 T 130 250 T 170 260' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 280 Q 30 220, 50 230 T 90 240 T 130 230 T 170 240 T 210 230' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 260 Q 30 200, 50 210 T 90 220 T 130 210 T 170 220 T 210 210 T 250 220' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.wavy-mid-right {
+    top: 32%; /* match left position */
+    right: 4%;
+    background-image: url("data:image/svg+xml,%3Csvg width='350' height='350' viewBox='0 0 350 350' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 330 320 Q 320 260, 300 270 T 260 280 T 220 270' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 300 Q 320 240, 300 250 T 260 260 T 220 250 T 180 260' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 280 Q 320 220, 300 230 T 260 240 T 220 230 T 180 240 T 140 230' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 260 Q 320 200, 300 210 T 260 220 T 220 210 T 180 220 T 140 210 T 100 220' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@media (max-width: 768px) {
+    .wavy-mid-left, .wavy-mid-right {
+        top: 42%;
+        left: 2%;
+        right: 2%;
+        width: 240px;
+        height: 240px;
+    }
+}
+/* End of merge resolution */
