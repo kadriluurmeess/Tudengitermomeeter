@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             zombie: {
                 title: "Zombie Tudeng",
                 text: "Sa oled kõndiv sessi-vaim. Su keha liigub, aga hing on raamatukokku maha jäänud. Kohvi tase veres on kriitiline, unevõlg ehmatav ja Moodle'i avamine tekitab eksistentsiaalse paanika.",
-                advice: "Soovitus: mine joo vett. Ja siis veel vett. Ja võib-olla magagi.",
+                advice: "Soovitus: mine joo vett. Ja siis veel vett. Ja võib-olla mine maga ka veits.",
                 traits: {
                     high: "Sa elad zombie-režiimis",
                     medium: "Sul on zombie hetki",
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             sõltlane: {
                 title: "Kofeiinisõltlane",
-                text: "Sa ei joo kohvi - kohv joob sind. Kohvitass on alati käes, isegi unes. Baristad tunnevad sind nimepidi ja mõni lausa vaatab murelikult.",
+                text: "Sa ei joo kohvi vaid kohv joob sind. Kohvitass on alati käes, isegi unes. Baristad tunnevad sind nimepidi ja mõni lausa vaatab murelikult.",
                 advice: "Soovitus: proovi vahel ka sööki, mitte ainult kofeiini.",
                 traits: {
                     high: "Kohv voolab su veresoontes",
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tudeng: {
                 title: "Tartu Tudeng",
                 text: "Täiuslik tasakaal: pisut kaos, pisut motivatsiooni, palju kohvi ja natuke ellujäämist. Sa tead, kus saab tasuta pistikuid kasutada, mis on parimad Delta maja õppimise spotid ja kui palju peab õppima, et mitte läbi kukkuda ja samal ajal elus püsida.",
-                advice: "Soovitus: jätka samas vaimus - sa kehastad TÜ hinge.",
+                advice: "Soovitus: jätka samas vaimus! Sa kehastad TÜ hinge.",
                 traits: {
                     high: "Sa oled klassikaline Tartu tudeng",
                     medium: "Sul on tudengivaim ja sa tajud tudengielu",
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3>Sinu Tudengi Vibe</h3>
                 <p><strong>${percentageText}</strong></p>
                 <p>${mixedText}</p>
-                <p><em>Sa oled unikaalne segu - jätka samas vaimus!</em></p>
+                <p><em>Sa oled unikaalne segu, jätka samas vaimus!</em></p>
             </div>
         `;
     }
