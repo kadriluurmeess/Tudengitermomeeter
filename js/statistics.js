@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Calculate averages for each type
         const totalStats = {
-            student: 0,
+            tudeng: 0,
             zombie: 0,
-            guru: 0,
-            coffee: 0
+            tuupur: 0,
+            sõltlane: 0
         };
 
         weeklyResults.forEach(result => {
@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getTypeName(type) {
         const types = {
-            student: "Tartu Tudeng",
+            tudeng: "Tartu Tudeng",
             zombie: "Zombie Tudeng",
-            guru: "Õppur-Guru",
-            coffee: "Kohvimasina Sõltlane"
+            tuupur: "Tuupija",
+            sõltlane: "Kofeiinisõltlane"
         };
         return types[type] || type;
     }

@@ -132,17 +132,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 traits: {
                     high: "Kohv voolab su veresoontes",
                     medium: "Kohv on su hea sõber",
-                    low: "Sa armastad kohvi"
+                    low: "Sa vist ei joo kohvi liiga tihti"
                 }
             },
             tuupur: {
-                title: "Tuupur",
+                title: "Tuupija",
                 text: "Sa oled see inimene, kellelt kõik küsivad konspekte. Moodle on su kodu ja loengus oled kohal enne õppejõudu. Kui TÜ-l oleks tudengitele oma superhero, siis oleksid see sina.",
                 advice: "Soovitus: vahel on ka puhata vaja, muidu saad liiga võimsaks.",
                 traits: {
-                    high: "Sa oled tõeline õppeguru",
-                    medium: "Sul on tugev õppimisvaimu",
-                    low: "Sa hoolid õppimisest"
+                    high: "Sa oled tõeline õppija",
+                    medium: "Sul on tugev õppimisvaim",
+                    low: "Sa õpid vahest"
                 }
             },
             tudeng: {
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 advice: "Soovitus: jätka samas vaimus - sa kehastad TÜ hinge.",
                 traits: {
                     high: "Sa oled klassikaline Tartu tudeng",
-                    medium: "Sul on tudengivaim",
+                    medium: "Sul on tudengivaim ja sa tajud tudengielu",
                     low: "Sa tunned tudengielu"
                 }
             }
