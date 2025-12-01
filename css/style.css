@@ -295,11 +295,12 @@ h1 {
 }
 
 .about-image {
+    display: block;
     width: 100%;
     max-width: 600px;
     height: auto;
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem;
 }
 
 .stats-container {
