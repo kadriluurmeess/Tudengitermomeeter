@@ -17,15 +17,20 @@
     </header>
     
     <main>
-        <h1>Tartu Tudengi Vibechecker</h1>
-        <p class="subtitle">Saa teada, mis tüüpi tudeng sa oled!</p>
+        <div class="hero-section">
+            <h1>Tartu Tudengi<br>Vibechecker</h1>
+            <p class="subtitle">Saa teada, mis tüüpi tudeng sa oled!</p>
+            
+            <div id="start-container">
+                <button id="start-quiz" class="btn">Alusta testi!</button>
+            </div>
+            
+            <div class="wavy-lines wavy-left"></div>
+            <div class="wavy-lines wavy-right"></div>
+        </div>
 
         <div id="quiz-container" class="hidden">
             <!-- Küsimused genereeritakse JavaScriptiga -->
-        </div>
-
-        <div id="start-container">
-            <button id="start-quiz" class="btn">Alusta testi!</button>
         </div>
 
         <div id="result-container" class="hidden">
