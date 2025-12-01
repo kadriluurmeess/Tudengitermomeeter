@@ -70,8 +70,8 @@ main {
 .hero-section {
     position: relative;
     text-align: center;
-    padding: 3rem 1rem;
-    min-height: 600px;
+    padding: 3rem 1rem 1rem 1rem;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

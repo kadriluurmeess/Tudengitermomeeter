@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const startContainer = document.getElementById('start-container');
+    const introContainer = document.getElementById('intro-container');
     const quizContainer = document.getElementById('quiz-container');
     const resultContainer = document.getElementById('result-container');
     const startButton = document.getElementById('start-quiz');
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startQuiz() {
         startContainer.classList.add('hidden');
+        introContainer?.classList.add('hidden');
         document.querySelector('.subtitle')?.classList.add('hidden');
         document.querySelector('h1')?.classList.add('hidden');
         quizContainer.classList.remove('hidden');
@@ -144,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="result-actions">
                     <button class="btn" id="try-again-overlay">Proovi Uuesti</button>
+                    <button class="btn btn-share" id="share-result">Jaga Tulemust</button>
                 </div>
             </div>
         `;
@@ -157,11 +160,19 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.style.top = headerHeight + 'px';
         overlay.style.height = `calc(100vh - ${headerHeight}px)`;
 
+        // Store results for sharing
+        const resultsForSharing = results;
+
         // Retry button handler
         document.getElementById('try-again-overlay').addEventListener('click', () => {
             // Reset state and reload
             overlay.classList.add('fade-out');
             setTimeout(() => location.reload(), 300);
+        });
+
+        // Share button handler
+        document.getElementById('share-result').addEventListener('click', () => {
+            shareResult(resultsForSharing);
         });
     }
 
