@@ -21,16 +21,28 @@ body {
 
 header {
     background-color: var(--primary-color);
-    padding: 1rem 0;
+    padding: 0.3rem 0;
     margin-bottom: 2rem;
 }
 
-nav {
+.header-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 nav a {
@@ -56,18 +68,19 @@ main {
     position: relative;
     text-align: center;
     padding: 3rem 1rem;
-    min-height: 500px;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    padding-top: 1rem;
 }
 
 h1 {
     color: var(--primary-color);
     font-family: 'DM Serif Display', serif;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     font-size: 5rem;
     font-weight: 400;
     line-height: 1.1;
@@ -91,15 +104,15 @@ h1 {
 
 .wavy-lines {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     pointer-events: none;
 }
 
 .wavy-left {
     bottom: 0;
     left: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 50 250 Q 50 200, 100 200 T 150 200 T 200 200 T 250 200' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3Cpath d='M 50 230 Q 50 180, 100 180 T 150 180 T 200 180 T 250 180' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3Cpath d='M 50 210 Q 50 160, 100 160 T 150 160 T 200 160 T 250 160' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3Cpath d='M 50 190 Q 50 140, 100 140 T 150 140 T 200 140 T 250 140' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3Cpath d='M 50 170 Q 50 120, 100 120 T 150 120 T 200 120 T 250 120' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3Cpath d='M 50 150 Q 50 100, 100 100 T 150 100 T 200 100 T 250 100' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='350' height='350' viewBox='0 0 350 350' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 20 320 Q 30 260, 50 270 T 90 280 T 130 270' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 300 Q 30 240, 50 250 T 90 260 T 130 250 T 170 260' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 280 Q 30 220, 50 230 T 90 240 T 130 230 T 170 240 T 210 230' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 260 Q 30 200, 50 210 T 90 220 T 130 210 T 170 220 T 210 210 T 250 220' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 240 Q 30 180, 50 190 T 90 200 T 130 190 T 170 200 T 210 190 T 250 200 T 290 190' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 220 Q 30 160, 50 170 T 90 180 T 130 170 T 170 180 T 210 170 T 250 180 T 290 170 T 330 180' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -107,7 +120,23 @@ h1 {
 .wavy-right {
     bottom: 0;
     right: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 250 250 Q 250 200, 200 200 T 150 200 T 100 200 T 50 200' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3Cpath d='M 250 230 Q 250 180, 200 180 T 150 180 T 100 180 T 50 180' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3Cpath d='M 250 210 Q 250 160, 200 160 T 150 160 T 100 160 T 50 160' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3Cpath d='M 250 190 Q 250 140, 200 140 T 150 140 T 100 140 T 50 140' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3Cpath d='M 250 170 Q 250 120, 200 120 T 150 120 T 100 120 T 50 120' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3Cpath d='M 250 150 Q 250 100, 200 100 T 150 100 T 100 100 T 50 100' stroke='%230d0d55' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='350' height='350' viewBox='0 0 350 350' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 330 320 Q 320 260, 300 270 T 260 280 T 220 270' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 300 Q 320 240, 300 250 T 260 260 T 220 250 T 180 260' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 280 Q 320 220, 300 230 T 260 240 T 220 230 T 180 240 T 140 230' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 260 Q 320 200, 300 210 T 260 220 T 220 210 T 180 220 T 140 210 T 100 220' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 240 Q 320 180, 300 190 T 260 200 T 220 190 T 180 200 T 140 190 T 100 200 T 60 190' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 220 Q 320 160, 300 170 T 260 180 T 220 170 T 180 180 T 140 170 T 100 180 T 60 170 T 20 180' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.wavy-top-left {
+    top: 0;
+    left: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='350' height='350' viewBox='0 0 350 350' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 20 30 Q 30 90, 50 80 T 90 70 T 130 80' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 50 Q 30 110, 50 100 T 90 90 T 130 100 T 170 90' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 70 Q 30 130, 50 120 T 90 110 T 130 120 T 170 110 T 210 120' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 90 Q 30 150, 50 140 T 90 130 T 130 140 T 170 130 T 210 140 T 250 130' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 110 Q 30 170, 50 160 T 90 150 T 130 160 T 170 150 T 210 160 T 250 150 T 290 160' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 20 130 Q 30 190, 50 180 T 90 170 T 130 180 T 170 170 T 210 180 T 250 170 T 290 180 T 330 170' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.wavy-top-right {
+    top: 0;
+    right: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='350' height='350' viewBox='0 0 350 350' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 330 30 Q 320 90, 300 80 T 260 70 T 220 80' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 50 Q 320 110, 300 100 T 260 90 T 220 100 T 180 90' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 70 Q 320 130, 300 120 T 260 110 T 220 120 T 180 110 T 140 120' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 90 Q 320 150, 300 140 T 260 130 T 220 140 T 180 130 T 140 140 T 100 130' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 110 Q 320 170, 300 160 T 260 150 T 220 160 T 180 150 T 140 160 T 100 150 T 60 160' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3Cpath d='M 330 130 Q 320 190, 300 180 T 260 170 T 220 180 T 180 170 T 140 180 T 100 170 T 60 180 T 20 170' stroke='%230d0d55' stroke-width='4' fill='none'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -132,8 +161,13 @@ h1 {
     box-shadow: 0 6px 20px rgba(13, 13, 85, 0.4);
 }
 
-#quiz-container,
-#result-container {
+#result-container .btn {
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 5;
+}
+
+#quiz-container {
     margin-top: 2rem;
 }
 
@@ -142,10 +176,14 @@ h1 {
 }
 
 #quiz-container {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(13, 13, 85, 0.15);
+    background: var(--primary-color);
+    padding: 3rem 3.5rem;
+    border-radius: 30px;
+    box-shadow: 0 6px 30px rgba(13, 13, 85, 0.3);
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
 }
 
 .question {
@@ -153,10 +191,13 @@ h1 {
 }
 
 .question h2 {
-    color: var(--primary-color);
+    color: var(--accent-color);
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
 }
 
 .answers {
@@ -165,12 +206,12 @@ h1 {
 }
 
 .answer-btn {
-    background: white;
-    border: 3px solid var(--primary-color);
+    background: #ffb3e6;
+    border: none;
     color: var(--primary-color);
     font-family: 'Montserrat', sans-serif;
-    padding: 1.2rem;
-    border-radius: 15px;
+    padding: 1.3rem;
+    border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s;
     font-size: 1rem;
@@ -178,51 +219,65 @@ h1 {
 }
 
 .answer-btn:hover {
-    background: var(--primary-color);
-    color: white;
+    background: #ff99dc;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(13, 13, 85, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 153, 220, 0.4);
 }
 
 #result-container {
+    position: relative;
     text-align: center;
-    padding: 2.5rem;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(13, 13, 85, 0.15);
+    padding: 3rem 1rem;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 1rem;
 }
 
 #result-container h2 {
-    color: var(--primary-color);
+    color: #ff99dc;
     font-family: 'DM Serif Display', serif;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.result-box {
+    background: var(--accent-color);
+    padding: 3rem 3.5rem;
+    border-radius: 30px;
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 6px 30px rgba(13, 13, 85, 0.3);
 }
 
 .result-details {
-    text-align: left;
-    margin: 2rem 0;
-    padding: 2rem;
-    background: #f8f8ff;
-    border-radius: 15px;
-    border-left: 6px solid var(--accent-color);
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .result-details h3 {
     color: var(--primary-color);
-    font-family: 'Racing Sans One', sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
 }
 
 .result-details p {
     margin: 0.8rem 0;
     line-height: 1.8;
     font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
 }
 
 .result-details p strong {
-    color: var(--accent-color);
+    color: var(--primary-color);
     font-weight: 600;
 }
 

@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startQuiz() {
         startContainer.classList.add('hidden');
+        document.querySelector('.subtitle')?.classList.add('hidden');
+        document.querySelector('h1')?.classList.add('hidden');
         quizContainer.classList.remove('hidden');
         showQuestion();
     }
@@ -95,7 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resultContainer.innerHTML = `
             <h2>Sinu Tudengi Vibe:</h2>
-            ${resultMessage}
+            <div class="result-box">
+                ${resultMessage}
+            </div>
             <button class="btn" onclick="location.reload()">Proovi Uuesti</button>
         `;
 
