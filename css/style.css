@@ -70,13 +70,12 @@ main {
 .hero-section {
     position: relative;
     text-align: center;
-    padding: 3rem 1rem 1rem 1rem;
+    padding: 1rem;
     min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 1rem;
 }
 
 h1 {
@@ -100,7 +99,7 @@ h1 {
 
 #start-container {
     text-align: center;
-    margin: 1rem 0;
+    margin: 2rem 0 0 0;
     z-index: 10;
     position: relative;
 }
@@ -322,7 +321,7 @@ h1 {
 footer {
     text-align: center;
     padding: 2rem;
-    margin-top: 4rem;
+    margin-top: 0;
     color: var(--text-color);
 }
 /* Prevent horizontal scrolling caused by decorative images */

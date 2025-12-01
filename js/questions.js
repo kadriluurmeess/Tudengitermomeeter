@@ -1,3 +1,8 @@
+// Tudengi Termomeetri küsimused ja vastused
+// Selles failis on kõik 10 viktoriini küsimust koos vastusevariantidega
+// Iga vastus annab punkte erinevatele tudengi-tüüpidele
+
+// Küsimuste massiiv
 const questions = [
     {
         question: "Mitu tundi sa magasid?",

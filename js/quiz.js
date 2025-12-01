@@ -1,31 +1,42 @@
+// Tudengi Termomeetri viktoriin - peamine JavaScripti fail
+// See fail haldab viktoriini loogikat, küsimuste kuvamist ja tulemuste arvutamist
+
+// Ootame, kuni lehekülg on täielikult laetud
 document.addEventListener('DOMContentLoaded', () => {
+    // Hangime viited HTML elementidele
     const startContainer = document.getElementById('start-container');
     const introContainer = document.getElementById('intro-container');
     const quizContainer = document.getElementById('quiz-container');
     const resultContainer = document.getElementById('result-container');
     const startButton = document.getElementById('start-quiz');
 
+    // Jälgime praegust küsimust ja punkte
     let currentQuestion = 0;
     let scores = {
-        tudeng: 0,
-        zombie: 0,
-        tuupur: 0,
-        sõltlane: 0
+        tudeng: 0,      // Punktid Tartu Tudengi tüübi jaoks
+        zombie: 0,      // Punktid Zombie Tudengi tüübi jaoks
+        tuupur: 0,      // Punktid Tuupija tüübi jaoks
+        sõltlane: 0     // Punktid Kofeiinisõltlase tüübi jaoks
     };
+
 
     startButton.addEventListener('click', startQuiz);
 
+    // Funktsioon küsimustiku alustamiseks
     function startQuiz() {
+        // Peidame tutvustuse ja alustamise nupu
         startContainer.classList.add('hidden');
         introContainer?.classList.add('hidden');
         document.querySelector('.subtitle')?.classList.add('hidden');
         document.querySelector('h1')?.classList.add('hidden');
+        // Näitame küsimuste konteinerit
         quizContainer.classList.remove('hidden');
         quizContainer.classList.add('fade-in');
         setTimeout(() => quizContainer.classList.remove('fade-in'), 300);
         showQuestion();
     }
 
+    // Funktsioon küsimuse kuvamiseks
     function showQuestion() {
         const question = questions[currentQuestion];
         
@@ -42,34 +53,36 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // Add fade when new question is shown
+        // Lisame hägustumisefekti uue küsimuse kuvamisel
         quizContainer.classList.add('fade-in');
         setTimeout(() => quizContainer.classList.remove('fade-in'), 300);
 
-        // Add event listeners to answer buttons
+        // Lisame vastuse nuppudele sündmuste kuulajad
         document.querySelectorAll('.answer-btn').forEach(button => {
             button.addEventListener('click', () => handleAnswer(button.dataset.index));
         });
     }
 
+    // Funktsioon vastuse töötlemiseks
     function handleAnswer(answerIndex) {
         const answer = questions[currentQuestion].answers[answerIndex];
         
-        // Add scores
+        // Lisame punktid valitud vastuse põhjal
         Object.entries(answer.score).forEach(([type, score]) => {
             scores[type] = (scores[type] || 0) + score;
         });
 
+        // Liigume järgmisele küsimusele
         currentQuestion++;
 
         if (currentQuestion < questions.length) {
             showQuestion();
         } else {
-            // Fade out current quiz container then show 'Get Results' button
+            // Hägustame praeguse küsimustiku konteinerit ja näitame 'Näita tulemusi' nuppu
             quizContainer.classList.add('fade-out');
             setTimeout(() => {
                 quizContainer.classList.remove('fade-out');
-                // Last question answered – clear questions and hide quiz container (avoid stray empty box)
+                // Viimane küsimus vastatud – tühjendame küsimused ja peidame küsimustiku
                 quizContainer.innerHTML = '';
                 quizContainer.classList.add('hidden');
                 const hero = document.querySelector('.hero-section');
@@ -78,16 +91,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const getBtn = document.createElement('button');
                 getBtn.id = 'get-results';
                 getBtn.className = 'btn get-results-btn';
-                // Localize to Estonian
+                // Nupu tekst eesti keeles
                 getBtn.textContent = 'Näita tulemusi';
                 btnWrap.appendChild(getBtn);
-                // remove any previous get-results wrapper (avoid duplicates)
+                // Eemaldame varasemad tulemuste nupud
                 document.querySelectorAll('.get-results-wrap').forEach(el => el.remove());
-                // append the button to the hero section so it sits between the wave lines
+                
                 hero.appendChild(btnWrap);
-                // Optionally, animate the button appearance
+               
                 setTimeout(() => btnWrap.classList.remove('fade-in'), 300);
-                // Attach click to show results overlay
+                
                 getBtn.addEventListener('click', () => {
                     showResultOverlay();
                 });
@@ -96,26 +109,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showResult() {
-        // Backwards compatibility: show results directly into overlay
+        
         showResultOverlay();
     }
 
     function showResultOverlay() {
-        // Hide the quiz container content (questions container remains to maintain layout)
+        // Peidame küsimustiku konteineri 
         quizContainer.classList.add('hidden');
-        // Prevent background scroll while overlay is visible
+        
         document.body.style.overflow = 'hidden';
 
-        // Create overlay
+        
         let overlay = document.createElement('div');
         overlay.className = 'results-overlay fade-in';
         overlay.setAttribute('role', 'dialog');
         overlay.setAttribute('aria-modal', 'true');
-        // Leave main content visible; only hide the quiz container (we already add hidden on quizContainer at start)
-        // Keep decorative waves visible and header clickable for navigation
-        // (do not hide waves or header; just hide main content)
+        // Jätame põhisisu nähtavaks; peidame ainult küsimustiku konteineri
+        // Hoiame dekoratiivsed lained nähtavaks ja päise klikitavaks navigeerimiseks
 
-        // Calculate results (extract the logic from showResult)
+        // Arvutame tulemused
         const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
         let results = Object.entries(scores)
             .filter(([type, score]) => score > 0)
@@ -135,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const resultMessage = generateResultMessage(results);
 
-        // Save to localStorage
+        // Salvestame tulemused localStorage'sse
         saveResult(results);
 
         overlay.innerHTML = `
@@ -146,33 +158,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="result-actions">
                     <button class="btn" id="try-again-overlay">Proovi Uuesti</button>
-                    <button class="btn btn-share" id="share-result">Jaga Tulemust</button>
                 </div>
             </div>
         `;
 
-        // Append overlay to body
+        
         document.body.appendChild(overlay);
 
-        // Position overlay below header so header remains visible and clickable
+       
         const headerEl = document.querySelector('header');
         const headerHeight = headerEl ? Math.ceil(headerEl.getBoundingClientRect().height) : 0;
         overlay.style.top = headerHeight + 'px';
         overlay.style.height = `calc(100vh - ${headerHeight}px)`;
+        
 
-        // Store results for sharing
-        const resultsForSharing = results;
-
-        // Retry button handler
+        // Proovi uuesti nupu käsitleja
         document.getElementById('try-again-overlay').addEventListener('click', () => {
-            // Reset state and reload
+            // Lähtestame oleku ja laeme lehe uuesti
             overlay.classList.add('fade-out');
             setTimeout(() => location.reload(), 300);
-        });
-
-        // Share button handler
-        document.getElementById('share-result').addEventListener('click', () => {
-            shareResult(resultsForSharing);
         });
     }
 
@@ -232,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // If one type dominates (>60%), show pure description
+        // Kui üks tüüp domineerib (>60%), näitame puhast kirjeldust
         if (results[0].percentage > 60) {
             const mainType = descriptions[results[0].type];
             return `
@@ -245,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
-        // Mixed description based on top 2-3 types
+        // Segatud kirjeldus põhineb 2-3 parimat tüüpi
         const topTypes = results.slice(0, 2);
         let mixedText = "";
         
@@ -269,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Create percentage breakdown
+        // Loome protsentuaalse jaotuse
         const percentageText = results
             .map(r => `${r.percentage}% ${getTypeName(r.type)}`)
             .join(", ");
@@ -291,20 +295,5 @@ document.addEventListener('DOMContentLoaded', () => {
             results: results
         });
         localStorage.setItem('quizResults', JSON.stringify(previousResults));
-    }
-
-    function shareResult(message) {
-        if (navigator.share) {
-            navigator.share({
-                title: 'Minu Tartu Tudengi Vibe',
-                text: message,
-                url: window.location.href
-            });
-        } else {
-            // Fallback - copy to clipboard
-            navigator.clipboard.writeText(message).then(() => {
-                alert('Tulemus kopeeritud lõikelauale!');
-            });
-        }
     }
 });
