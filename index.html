@@ -4,37 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tartu Tudengi Vibe Checker</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;600&family=Racing+Sans+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <nav>
-            <a href="index.html" class="active">Avaleht</a>
-            <a href="about.html">Meist</a>
-            <a href="statistics.html">Statistika</a>
-        </nav>
+        <div class="header-container">
+            <div class="logo">
+                <svg width="95" height="95" viewBox="0 0 95 95" xmlns="http://www.w3.org/2000/svg">
+                    <path id="curve" d="M 17,47.5 A 30,30 0 1,1 78,47.5" fill="none"/>
+                    <text fill="#ff99dc" font-family="Racing Sans One" font-size="14.5">
+                        <textPath href="#curve" startOffset="50%" text-anchor="middle">
+                            Tudengi
+                        </textPath>
+                    </text>
+                    <path id="curve2" d="M 78,47.5 A 30,30 0 1,1 17,47.5" fill="none"/>
+                    <text fill="#ff99dc" font-family="Racing Sans One" font-size="14.5">
+                        <textPath href="#curve2" startOffset="50%" text-anchor="middle">
+                            Termomeeter
+                        </textPath>
+                    </text>
+                </svg>
+            </div>
+            <nav>
+                <a href="index.html" class="active">Pealeht</a>
+                <a href="about.html">Meist</a>
+                <a href="statistics.html">Statistika</a>
+            </nav>
+        </div>
     </header>
     
     <main>
-        <h1>Tartu Tudengi Vibe Checker</h1>
-        <p class="subtitle">Saa teada, kui ellu sa veel jäid! 🎓</p>
+        <div class="hero-section">
+            <h1>Tartu Tudengi<br>Vibechecker</h1>
+            
+            <div id="quiz-container" class="hidden">
+                <!-- Küsimused genereeritakse JavaScriptiga -->
+            </div>
 
-        <div id="quiz-container" class="hidden">
-            <!-- Küsimused genereeritakse JavaScriptiga -->
-        </div>
+            <div id="intro-container">
+                <div class="intro-text">
+                    <p>Tere tulemast Tartu Tudengi Vibecheckerisse!</p>
+                    <p>Vasta 10 küsimusele ja saa teada, milline on sinu tudengielu vibe.</p>
+                    <p><strong>Juhis:</strong> Vali iga küsimuse juures endale sobiv vastus. Tulemused näitavad, kui suur osa sinust on zombie tudeng, kofeiinisõltlane, tuupija või klassikaline Tartu tudeng!</p>
+                </div>
+            </div>
 
-        <div id="start-container">
-            <button id="start-quiz" class="btn">Alusta Testi</button>
+            <div id="start-container">
+                <button id="start-quiz" class="btn">Alusta testi!</button>
+            </div>
+            
+            <div class="wavy-lines wavy-top-left"></div>
+            <div class="wavy-lines wavy-top-right"></div>
         </div>
 
         <div id="result-container" class="hidden">
+            <!-- No decorative waves inside result container (only hero has top waves) -->
             <!-- Tulemused kuvatakse siia -->
         </div>
     </main>
 
     <footer>
-        <p>© 2025 Tartu Tudengi Vibe Checker</p>
+        <p>© 2025 Tartu Tudengi Vibechecker</p>
+        <p class="contact">Kontakt: <a href="mailto:triin.aabrel@gmail.com">triin.aabrel@gmail.com</a></p>
     </footer>
 
     <script src="js/questions.js"></script>
